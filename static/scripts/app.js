@@ -105,7 +105,7 @@ class View extends Component {
             obj = { text: "default here" };
         }
         // Set contents
-        document.querySelector("#app").innerHTML = `<p>Status: ` + obj.text + `</p>`;
+        document.querySelector("#app").innerHTML += `<p>Status: ` + obj.text + `</p>`;
        // Add DOM event listeners
        let self = this;
         document.querySelector("#app").addEventListener("click", (evt) => {

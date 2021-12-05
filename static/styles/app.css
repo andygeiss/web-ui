@@ -1,24 +1,124 @@
 * {
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font: inherit;
   margin: 0;
+  outline: none;
   padding: 0;
+  text-decoration: none;
+  -webkit-transition: all .35s;
+  transition: all .35s;
 }
 
+/* gets text color based on a given background color */
+/* sets a good contrast background/foreground combination */
+/* defaults */
 body {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: white;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+/* app specific */
+.app {
+  display: -ms-grid;
+  display: grid;
+  font-family: "Fira Sans Book", serif;
+  font-size: 20pt;
+      grid-template-areas: "header nav" "aside main";
+  -ms-grid-columns: 300px 1fr;
+      grid-template-columns: 300px 1fr;
+  -ms-grid-rows: 3rem 1fr;
+      grid-template-rows: 3rem 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.app aside {
+  background-color: #0a5ae1;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  font-size: 80%;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: aside;
+  line-height: 1rem;
+  padding: 1rem;
+}
+
+.app header {
+  background-color: #000064;
+  color: #fff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: default;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 100%;
+  font-weight: bold;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
+  padding: 1rem;
+}
+
+.app main {
+  background-color: #fa9b50;
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  font-size: 80%;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
+  line-height: 1rem;
+  padding: 1rem;
+}
+
+.app nav {
+  background-color: #ff5a46;
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 80%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: nav;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  line-height: 1rem;
+  padding: 1rem;
+}
+
+.app nav a {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 .5rem;
+  padding: 0 .5rem;
+}
+
+.app nav a img {
+  height: 24px;
+  width: 24px;
 }
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,15 @@
+
+/* gets text color based on a given background color */
+@function get-text-color($color) {
+    @if (lightness($color) > 50) {
+        @return #000;
+    } @else {
+        @return #fff;
+    }
+}
+
+/* sets a good contrast background/foreground combination */
+@mixin set-color($color) {
+    background-color: $color;
+    color: get-text-color($color);
+}
