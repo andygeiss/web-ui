@@ -20,13 +20,16 @@ During the design process it's necessary for me to prototype new ideas without h
 ## Installation
 
 **From source**
+
     git clone https://github.com/andygeiss/web-ui
     cd web-ui
 
 **Windows**
+
     make.bat
 
 **Unix**
+
     make
 
 ## Steps to start
