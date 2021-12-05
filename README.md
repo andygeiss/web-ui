@@ -1,8 +1,5 @@
 # web-ui
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/andygeiss/ecs)](https://goreportcard.com/report/github.com/andygeiss/ecs)
-[![BCH compliance](https://bettercodehub.com/edge/badge/andygeiss/ecs?branch=master)](https://bettercodehub.com/)
-
 **Build your own Web-Frontend without a framework from scratch by using CSS, HTML and Javascript natively**
 
 As a web designer I often combine many different skills and disciplines to create a visually appealing and easy-to-use Web-Frontend.
