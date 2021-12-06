@@ -105,10 +105,10 @@ class View extends Component {
             obj = { text: "default here" };
         }
         // Set contents
-        document.querySelector("#app").innerHTML += `<p>Status: ` + obj.text + `</p>`;
-       // Add DOM event listeners
-       let self = this;
-        document.querySelector("#app").addEventListener("click", (evt) => {
+        document.querySelector("#content").innerHTML = `main: ` + obj.text;
+        // Add DOM event listeners
+        let self = this;
+        document.querySelector("#content").addEventListener("click", (evt) => {
             evt.preventDefault();
             // Do API call
             self.viewModel.Status();
