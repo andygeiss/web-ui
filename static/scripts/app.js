@@ -22,9 +22,7 @@ class Component {
         // We use window for dispatching events globally.
         // Thus, we don't need "bubbles" to propagate events up through the DOM.
         window.dispatchEvent(new CustomEvent(event, {
-            detail: {
-                output: data
-            }
+            data: data
         }))
     }
     // getState reads a state value by a given key.
@@ -35,7 +33,7 @@ class Component {
     on(event, fn) {
         window.addEventListener(event, (e) => {
             // Only the object data (detail) is necessary for this kind of event.
-            fn(e.detail.output);
+            fn(e.data);
         });
     }
     // setState writes a state key, value pair.
@@ -52,7 +50,7 @@ class Model extends Component {
         // Add event listeners
         this.on("Status", async (params) => {
             let config = createConfig("POST", params);
-            fetch("http://127.0.0.1:3080/status", config)
+            fetch("/status", config)
                 .then((response) => response.json())
                 .then((data) => {
                     this.emit("Status done", data);
@@ -93,6 +91,11 @@ class View extends Component {
         this.on("Status error", (err) => {
             this.render();
         });
+        let self = this;
+        document.querySelector("#content").addEventListener("click", (evt) => {
+            evt.preventDefault();
+            self.viewModel.Status();
+        });
         // Initial rendering
         this.render();
     }
@@ -106,13 +109,6 @@ class View extends Component {
         }
         // Set contents
         document.querySelector("#content").innerHTML = `main: ` + obj.text;
-        // Add DOM event listeners
-        let self = this;
-        document.querySelector("#content").addEventListener("click", (evt) => {
-            evt.preventDefault();
-            // Do API call
-            self.viewModel.Status();
-        });
     }
 }
 

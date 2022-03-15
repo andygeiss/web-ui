@@ -18,12 +18,17 @@ var content embed.FS
 
 func main() {
 	log.Printf("%s %s (%s)\n", name, version, build)
-	// Use embedding mode
+	// Embed static files into executable
 	fsys, err := fs.Sub(content, "static")
 	if err != nil {
 		log.Fatal(err)
 	}
-	// Handlers
+	// Specify the handlers
+	http.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("OK"))
+	})
 	http.Handle("/", http.FileServer(http.FS(fsys)))
+	// Start listing ...
+	log.Println("start listening ...")
 	http.ListenAndServe(":3000", nil)
 }
