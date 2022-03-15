@@ -25,7 +25,7 @@ func main() {
 	}
 	// Specify the handlers
 	http.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("OK"))
+		w.Write([]byte(`{"text":"OK"}`))
 	})
 	http.Handle("/", http.FileServer(http.FS(fsys)))
 	// Start listing ...

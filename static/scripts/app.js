@@ -22,7 +22,9 @@ class Component {
         // We use window for dispatching events globally.
         // Thus, we don't need "bubbles" to propagate events up through the DOM.
         window.dispatchEvent(new CustomEvent(event, {
-            data: data
+            detail: {
+                output: data
+            }
         }))
     }
     // getState reads a state value by a given key.
@@ -33,7 +35,7 @@ class Component {
     on(event, fn) {
         window.addEventListener(event, (e) => {
             // Only the object data (detail) is necessary for this kind of event.
-            fn(e.data);
+            fn(e.detail.output);
         });
     }
     // setState writes a state key, value pair.
@@ -91,10 +93,9 @@ class View extends Component {
         this.on("Status error", (err) => {
             this.render();
         });
-        let self = this;
         document.querySelector("#content").addEventListener("click", (evt) => {
             evt.preventDefault();
-            self.viewModel.Status();
+            this.viewModel.Status();
         });
         // Initial rendering
         this.render();
